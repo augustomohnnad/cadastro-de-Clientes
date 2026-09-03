@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Lista de tarefas</title>
+</head>
+<body>
+    <main class="content-main">
+        <header class="content-header">
+            <h1>Cadastros de tarefas</h1>
+            <small content-caption>Cadastre aqui suas tarefas</small>
+        </header>
+
+        <section class="container">
+            <div class="content-input">
+                <label for="title">Titulo: </label>
+                <input type="text" id="title" name="title">
+            </div>
+            
+            <div class="content-input">
+                <label for="task">Descrição:</label>
+                <input type="text" id="task" name="task">
+            </div>
+
+            <button id="adicionar" aria-label="Adicionar tarefa">ADICIONAR</button>
+            
+        </section>
+
+        <section class="container-cards"></section>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>
