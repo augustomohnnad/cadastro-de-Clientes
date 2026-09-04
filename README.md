@@ -4,7 +4,7 @@
 
 Este projeto foi desenvolvido com o objetivo de praticar o consumo e a manipulação de APIs REST utilizando JavaScript e a **Fetch API**.
 
-A aplicação permite cadastrar, consultar e excluir tarefas através de requisições HTTP, atualizando a interface dinamicamente conforme as operações são realizadas.
+A aplicação permite cadastrar, consultar e excluir clientes através de requisições HTTP, atualizando a interface dinamicamente conforme as operações são realizadas.
 
 ## Tecnologias Utilizadas
 
@@ -28,17 +28,17 @@ A aplicação permite cadastrar, consultar e excluir tarefas através de requisi
 * `data-*` attributes
 * Métodos HTTP:
 
-  * `GET` — consulta as tarefas
-  * `POST` — cadastra novas tarefas
-  * `DELETE` — remove tarefas
+  * `GET` — consulta clietes
+  * `POST` — cadastra clientes
+  * `DELETE` — remove clientes
 
 ## Funcionamento
 
 A aplicação utiliza a Fetch API para realizar a comunicação entre o front-end e uma API REST.
 
-O método `GET` é utilizado para buscar as tarefas e exibi-las na página. O `POST` envia uma nova tarefa para a API utilizando JSON. O `DELETE` utiliza o identificador (`_id`) da tarefa selecionada para removê-la.
+O método `GET` é utilizado para buscar clientes e exibi-los na página. O `POST` envia um novo cliente para a API utilizando JSON. O `DELETE` utiliza o identificador (`_id`) do cliente selecionada para removê-la.
 
-Após as operações de cadastro ou exclusão, a aplicação realiza uma nova consulta à API para manter a lista de tarefas atualizada.
+Após as operações de cadastro ou exclusão, a aplicação realiza uma nova consulta à API para manter a lista de cliente atualizada.
 
 ## Objetivo
 
