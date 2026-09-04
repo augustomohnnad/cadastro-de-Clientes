@@ -1,9 +1,9 @@
-const API_KEY = "https://crudcrud.com/api/cc383276979e4ef683438881d90b09c4/tarefa"
+const API_KEY = "https://crudcrud.com/api/b876b11413504aecba1b26be0b2001bc/Custommer"
 
 const bodyCard = document.querySelector('.container-cards');
 
 //Função para Criar os Card conforme são cadastrado
-const getTask = async () =>  {
+const getCustommers = async () =>  {
     // Recebemos uma promessa de resposta HTTP ex: 200
     const response = await fetch(API_KEY)
     //Guarda o Json transformado em um objeto javascripts
@@ -13,17 +13,17 @@ const getTask = async () =>  {
         //limpeza do card antes de criar im novo, tinha um bug que ao cadastrar ele duplicava os cards
         bodyCard.innerHTML ='';
         // Trabalho um forEach para cada indice criar um card com o objeto
-        data.forEach(task => {
+        data.forEach(custommer=> {
             bodyCard.innerHTML += `
                 <article class="card">
                     <header class="card-title">
-                        <h2>${task.title}</h2>
+                        <h2>Nome: ${custommer.name}</h2>
                         <!--"atributo data-id" recebe o seu valor de _id da API para ser acessada pelo botão -->
-                        <button class="clear" data-id="${task._id}" >Apagar</button>
+                        <button class="clear" data-id="${custommer._id}" >Excluir</button>
                     </header>
 
                     <div class="card-body">
-                        <p>${task.descricao}</p>
+                        <p>E-mail: ${custommer.email}</p>
                     </div>
                 </article>
             `;
@@ -35,15 +35,15 @@ const getTask = async () =>  {
     const btnId = document.querySelector('.clear') 
     btnId.addEventListener('click', (event) => {
         const id = event.currentTarget.dataset.id;
-        deleteTask(id)
+        deleteCustommer(id)
     })
 
 };
 
 //Limpeza dos Inputs
 const clearInput = () => {
-    const title = document.getElementById('title').value = "";
-    const descricao = document.getElementById('task').value= "";
+    const nameCustommer = document.getElementById('name').value = "";
+    const email = document.getElementById('email').value= "";
 }
 
 
@@ -52,8 +52,8 @@ const clearInput = () => {
 //Evento para cadastro das Tarefas
 document.getElementById('adicionar').addEventListener('click', async (event) => {
     try {
-        const title = document.getElementById('title').value;
-        const descricao = document.getElementById('task').value;
+        const nameCustommer = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
     
         const response = await fetch(API_KEY, {
             method: "POST",
@@ -61,8 +61,8 @@ document.getElementById('adicionar').addEventListener('click', async (event) => 
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                title: title, 
-                descricao: descricao 
+                name: nameCustommer, 
+                email: email 
             })
         })
 
@@ -71,7 +71,7 @@ document.getElementById('adicionar').addEventListener('click', async (event) => 
         // apos o cadastro limpa os Input
         clearInput()
         // e busca novamento o novo objeto cadastrado
-        await getTask();
+        await getCustommers();
 
        
 
@@ -87,7 +87,7 @@ document.getElementById('adicionar').addEventListener('click', async (event) => 
 })
 
 //Função para deletar a tarefa
-const deleteTask = async  (id) => {
+const deleteCustommer = async  (id) => {
     try {
         // recebemos o ID do evento de captura do btn "apagar" e adicionamos na URL da API com o methodo Delete
         const response = await fetch(`${API_KEY}/${id}`, {
@@ -99,13 +99,12 @@ const deleteTask = async  (id) => {
         }
 
         alert(`Tarefa ${id} apagada com sucesso`);
-        await getTask()
+        await getCustommers()
 
     } catch (e) {
         console.error(error);
     }
 }
 
-//Carrega os cards que vem da API ao carregar a pagina
-getTask()
+
 
